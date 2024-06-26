@@ -38,7 +38,7 @@ class ActualitesScreen extends StatelessWidget {
                   height: 100,
                   child: Card(
                       margin: EdgeInsets.zero,
-                      color: Colors.black,
+                      color: Colors.orange,
                       child: Row(
                         children: [
                           IconButton(
@@ -48,7 +48,7 @@ class ActualitesScreen extends StatelessWidget {
                             icon: const Icon(Icons.add_circle,
                                 color: Colors.white),
                           ),
-                          const Text('Ajouter une nouvelle Actualité',
+                          const Text('Ajouter une nouvelle Propriété',
                               style: TextStyle(color: Colors.white)),
                         ],
                       )),

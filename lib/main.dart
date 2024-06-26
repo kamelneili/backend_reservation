@@ -109,7 +109,7 @@ class MyApp extends StatelessWidget {
           child: GetMaterialApp(
               debugShowCheckedModeBanner: false,
               onGenerateRoute: appRouter.generateRoute,
-              home: LoginScreen(),
+              home: HomeScreen(),
               routes: {
                 "home_screen": (context) => HomeScreen(),
               },

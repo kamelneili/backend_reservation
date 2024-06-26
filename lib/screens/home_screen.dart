@@ -20,77 +20,125 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text('Administration Piscine',
+          title: const Text('Administration',
               style: TextStyle(color: Colors.blue)),
           backgroundColor: Colors.black,
         ),
-        body: SizedBox(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Container(
-                width: double.infinity,
-                height: 150,
-                padding: const EdgeInsets.symmetric(horizontal: 10),
-                child: InkWell(
-                  onTap: () {
-                    BlocProvider.of<UserBloc>(context).add(LoadUsers());
-                    Get.to(() => const CartScreen());
-                  },
-                  child: const Card(
-                    color: Color.fromARGB(255, 33, 173, 243),
-                    child: Center(
-                        child: Text('Gérer  Clients',
-                            style: TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                            ))),
+        body: Padding(
+          padding: const EdgeInsets.only(top: 50.0),
+          child: SizedBox(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Container(
+                  width: double.infinity,
+                  height: 150,
+                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                  child: InkWell(
+                    onTap: () {
+                      BlocProvider.of<UserBloc>(context).add(LoadUsers());
+                      Get.to(() => const CartScreen());
+                    },
+                    child: const Card(
+                      color: Colors.orange,
+                      child: Center(
+                          child: Row(
+                        children: [
+                          SizedBox(
+                            height: 150,
+                            width: 150,
+                            child: Image(
+                              fit: BoxFit.fill,
+                              image: AssetImage('assets/clt.png'),
+                            ),
+                          ),
+                          SizedBox(
+                            width: 20,
+                          ),
+                          Text('Gérer  Clients',
+                              style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                              )),
+                        ],
+                      )),
+                    ),
                   ),
                 ),
-              ),
-              Container(
-                width: double.infinity,
-                height: 150,
-                padding: const EdgeInsets.symmetric(horizontal: 10),
-                child: InkWell(
-                  onTap: () {
-                    Get.to(() => OrdersScreen());
-                  },
-                  child: const Card(
-                    color: Color.fromARGB(255, 33, 173, 243),
-                    child: Center(
-                        child: Text('Gérer réservations',
-                            style: TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                            ))),
+                Container(
+                  width: double.infinity,
+                  height: 150,
+                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                  child: InkWell(
+                    onTap: () {
+                      Get.to(() => OrdersScreen());
+                    },
+                    child: const Card(
+                      color: Colors.orange,
+                      child: Center(
+                          child: Row(
+                        children: [
+                          SizedBox(
+                            height: 150,
+                            width: 150,
+                            child: Image(
+                              fit: BoxFit.fill,
+                              image: AssetImage('assets/location.png'),
+                            ),
+                          ),
+                          SizedBox(
+                            width: 20,
+                          ),
+                          Text('Gérer Locations',
+                              style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                              )),
+                        ],
+                      )),
+                    ),
                   ),
                 ),
-              ),
-              Container(
-                width: double.infinity,
-                height: 150,
-                padding: const EdgeInsets.symmetric(horizontal: 10),
-                child: InkWell(
-                  onTap: () {
-                    print("act");
-                    BlocProvider.of<ActualiteBloc>(context)
-                        .add(const LoadActualite());
+                Container(
+                  width: double.infinity,
+                  height: 150,
+                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                  child: InkWell(
+                    onTap: () {
+                      print("act");
+                      BlocProvider.of<ActualiteBloc>(context)
+                          .add(const LoadActualite());
 
-                    Get.to(() => ActualitesScreen());
-                  },
-                  child: const Card(
-                    color: Color.fromARGB(255, 33, 173, 243),
-                    child: Center(
-                        child: Text('Gérer actualités',
-                            style: TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                            ))),
+                      Get.to(() => ActualitesScreen());
+                    },
+                    child: const Card(
+                      color: Colors.orange,
+                      child: Row(
+                        children: [
+                          SizedBox(
+                            height: 150,
+                            width: 150,
+                            child: Image(
+                              fit: BoxFit.fill,
+                              image: AssetImage('assets/prop.jpg'),
+                            ),
+                          ),
+                          SizedBox(
+                            width: 20,
+                          ),
+                          Center(
+                              child: Text('Gérer Propriétés',
+                                  style: TextStyle(
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.bold,
+                                  ))),
+                        ],
+                      ),
+                    ),
                   ),
-                ),
-              )
-            ],
+                )
+              ],
+            ),
           ),
         ));
   }
