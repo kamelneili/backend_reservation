@@ -18,7 +18,7 @@ class ActualitesScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: const Color(0xFFfed9cd),
+          backgroundColor: Colors.orangeAccent,
           leading: IconButton(
             icon: const Icon(
               Icons.arrow_back_ios,
@@ -43,7 +43,7 @@ class ActualitesScreen extends StatelessWidget {
                         children: [
                           IconButton(
                             onPressed: () {
-                              Get.to(() => NewProductScreen());
+                              Get.to(() => const NewProductScreen());
                             },
                             icon: const Icon(Icons.add_circle,
                                 color: Colors.white),
@@ -96,7 +96,7 @@ class ProductCard extends StatelessWidget {
                           children: [
                             InkWell(
                               onTap: () {
-                                Get.to(() => NewProductScreen());
+                                Get.to(() => const NewProductScreen());
                               },
                               child: Container(
                                   alignment: Alignment.center,

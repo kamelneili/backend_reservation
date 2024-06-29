@@ -25,8 +25,8 @@ class SignupScreen extends StatefulWidget {
 
 class _SignupScreenState extends State<SignupScreen> {
   StorageRepository storage = StorageRepository();
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
-  final _formKey = GlobalKey<FormState>();
   TextEditingController email = TextEditingController();
   TextEditingController name = TextEditingController();
   TextEditingController phone = TextEditingController();
@@ -55,7 +55,7 @@ class _SignupScreenState extends State<SignupScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: const Color(0xFFfed9cd),
+        backgroundColor: Colors.orangeAccent,
         leading: IconButton(
           icon: const Icon(
             Icons.arrow_back_ios,
@@ -119,7 +119,7 @@ class _SignupScreenState extends State<SignupScreen> {
                     TextFormField(
                       controller: country,
                       decoration: const InputDecoration(
-                        labelText: 'Specialité',
+                        labelText: 'country',
                       ),
                       validator: (value) {
                         if (value!.isEmpty) {
@@ -129,7 +129,7 @@ class _SignupScreenState extends State<SignupScreen> {
                       },
                       onChanged: (value) {
                         context.read<SignupCubit>().userChanged(
-                              state.user!.copyWith(specialite: value),
+                              state.user!.copyWith(country: value),
                             );
                       },
                     ),
@@ -168,6 +168,27 @@ class _SignupScreenState extends State<SignupScreen> {
                               state.user!.copyWith(address: value),
                             );
                       },
+                    ),
+                    Row(
+                      children: [
+                        const Text(
+                          "Genre",
+                        ),
+                        DropdownButton<String>(
+                          items: <String>['Locataire', 'propriétaire']
+                              .map((String value) {
+                            return DropdownMenuItem<String>(
+                              value: value,
+                              child: Text(value),
+                            );
+                          }).toList(),
+                          onChanged: (value) {
+                            context.read<SignupCubit>().userChanged(
+                                  state.user!.copyWith(genre: value),
+                                );
+                          },
+                        ),
+                      ],
                     ),
                     TextFormField(
                       controller: zip,
@@ -288,10 +309,14 @@ class _SignupScreenState extends State<SignupScreen> {
                         // context.read<AuthRepository>().signOut();
                         if (_formKey.currentState!.validate()) {
                           context.read<SignupCubit>().signUpWithCredentials();
+                          Navigator.of(context).pushNamed(
+                            '/loginScreen',
+                          );
+                        } else {
+                          setState(() {
+                            initState();
+                          });
                         }
-                        Navigator.of(context).pushNamed(
-                          '/loginScreen',
-                        );
                       },
                     ),
                   ],

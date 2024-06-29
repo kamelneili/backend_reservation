@@ -29,7 +29,7 @@ class _CartScreenState extends State<CartScreen> {
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(60),
         child: AppBar(
-          backgroundColor: const Color(0xFFfed9cd),
+          backgroundColor: Colors.orangeAccent,
           leading: IconButton(
             icon: const Icon(
               Icons.arrow_back_ios,
